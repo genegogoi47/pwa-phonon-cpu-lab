@@ -1,0 +1,18 @@
+{
+  "name": "pwa-phonon-cpu-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "copy:phonon": "node scripts/copy-phonon.mjs",
+    "build": "npm run copy:phonon && vite build",
+    "dev": "npm run copy:phonon && vite --host 0.0.0.0",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "phonon-webgpu": "github:blixt/phonon#main"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
