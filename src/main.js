@@ -107,8 +107,13 @@ async function loadModel() {
     await requestPersistentStorage();
     log('Loading Phonon 31M with backend="cpu" (WebGPU deliberately disabled).');
     log('Importing the Phonon library from the locally hosted vendor bundle.');
-    const { Phonon } = await import(
-  /* @vite-ignore */ '/vendor/phonon/phonon.js'
+    const phononModuleUrl = new URL(
+  '/vendor/phonon/phonon.js',
+  window.location.origin
+).href;
+
+const { Phonon } = await import(
+  /* @vite-ignore */ phononModuleUrl
 );    log('Phonon JavaScript module loaded.', 'success');
     tts = await Phonon.load({
       model: 'phonon-31m-en',
